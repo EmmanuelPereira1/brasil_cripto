@@ -21,7 +21,7 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
 
 ### 1. Clonar o Repositório
 ```sh
-  git clone https://github.com/seu-usuario/brasil_cripto.git
+  git clone https://github.com/EmmanuelPereira1/brasil_cripto.git
   cd brasil_cripto
 ```
 
