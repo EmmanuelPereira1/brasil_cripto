@@ -22,6 +22,7 @@ class _HomeCoinsState extends State<HomeCoins> {
   late BlocCoinListCubit bloc;
   final FavoriteService _favoriteService = FavoriteService();
   bool isFavoritesFiltered = false;
+  // ignore: prefer_final_fields
   TextEditingController _searchController = TextEditingController();
   List<EntityCoinList> allCoins = [];
   List<EntityCoinList> filteredCoins = [];

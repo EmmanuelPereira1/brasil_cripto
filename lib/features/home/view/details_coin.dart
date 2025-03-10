@@ -1,9 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:brasil_cripto/core/entity/entity_coin_list.dart';
-import 'package:brasil_cripto/core/styles/app_colors.dart';
-import 'package:brasil_cripto/core/styles/app_text_styles.dart';
-import 'package:brasil_cripto/views/widgets/details_text.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:intl/intl.dart';
@@ -59,45 +56,38 @@ class CoinDetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(coin.name)),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(child: Image.network(coin.image, width: 80)),
             SizedBox(height: 16),
-            DetailsText(
-              title: "Current price: ",
-              value: formatCurrency(coin.currentPrice),
+            Center(
+              child: Text(
+                formatCurrency(coin.currentPrice),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
             ),
-            DetailsText(
-              title: "Price change percentage: ",
-              value: formatPercentage(coin.priceChangePercentage24H),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  formatPercentage(coin.priceChangePercentage24H),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ],
             ),
-            DetailsText(
-              title: "Price Change 24H: ",
-              value: formatCurrency(coin.priceChange24H),
-            ),
-            DetailsText(
-              title: "High 24H: ",
-              value: formatCurrency(coin.high24H),
-            ),
-            DetailsText(
-              title: "Low 24H: ",
-              value: formatCurrency(coin.low24H),
-            ),
-            DetailsText(
-              title: "Total volume: ",
-              value: formatCurrency(coin.totalVolume),
-            ),
+
             SizedBox(height: 20),
             Text(
               "Graphic",
-              style: AppTextStyles.title,
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 10),
             Flexible(
               child: SizedBox(
-                height: 400,
+                height: 300,
                 child: LineChart(
                   LineChartData(
                     gridData: FlGridData(show: true),
@@ -107,11 +97,11 @@ class CoinDetailPage extends StatelessWidget {
                       LineChartBarData(
                         spots: generateChartData(),
                         isCurved: true,
-                        color: AppColors.green,
+                        color: Colors.green,
                         barWidth: 4,
                         belowBarData: BarAreaData(
                           show: true,
-                          color: AppColors.green.withOpacity(0.3),
+                          color: Colors.green.withOpacity(0.3),
                         ),
                         dotData: FlDotData(show: true),
                       ),
